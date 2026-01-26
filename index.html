@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,18 +16,6 @@
   <meta property="og:description" content="VP-level transformation leader modernizing global procurement & supply chain through AI-enabled execution systems." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="headshot.jpg" />
-
-  <!-- Optional: Add a favicon in your repo (favicon.ico) -->
-  <!-- <link rel="icon" href="favicon.ico" /> -->
-
-  <!--
-    GitHub Pages portfolio site
-    Files to include in your repo root:
-      - index.html
-      - headshot.jpg
-      - Jason_Howie_Resume_2026.pdf
-
-  -->
 
   <style>
     :root {
@@ -76,6 +64,8 @@
       min-height: 100vh;
     }
 
+    img { max-width: 100%; height: auto; display: block; }
+
     a { color: inherit; text-decoration: none; }
     a:hover { opacity: 0.92; }
 
@@ -99,6 +89,7 @@
       padding: 14px 24px;
       width: min(100%, var(--max));
       margin: 0 auto;
+      position: relative;
     }
 
     .brand { display: flex; align-items: center; gap: 10px; min-width: 220px; }
@@ -159,12 +150,15 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      white-space: nowrap;
     }
 
     .btn:hover { transform: translateY(-1px); background: var(--card2); }
 
     .btn-primary {
-      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 85%, #ffffff 15%), color-mix(in srgb, var(--accent2) 80%, #ffffff 20%));
+      background: linear-gradient(135deg,
+        color-mix(in srgb, var(--accent) 85%, #ffffff 15%),
+        color-mix(in srgb, var(--accent2) 80%, #ffffff 20%));
       border-color: color-mix(in srgb, var(--accent) 55%, var(--border) 45%);
       color: #051126;
     }
@@ -211,7 +205,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(30px, 3.5vw, 46px);
+      font-size: clamp(28px, 3.8vw, 46px);
       line-height: 1.06;
       letter-spacing: -0.02em;
     }
@@ -271,7 +265,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .headshot-fallback {
@@ -401,6 +394,9 @@
       padding: 8px 10px;
       font-size: 13px;
       color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .timeline { display: grid; gap: 12px; }
@@ -422,7 +418,6 @@
 
     .role-title { font-weight: 850; letter-spacing: -0.01em; }
     .role-meta { color: var(--muted2); font-size: 13px; }
-
     .role-desc { margin-top: 10px; color: var(--muted); line-height: 1.58; }
 
     /* Form */
@@ -477,20 +472,57 @@
       padding-top: 18px;
     }
 
-    /* Responsive */
+    /* -----------------------------
+       RESPONSIVE IMPROVEMENTS
+    -------------------------------- */
+
+    /* Tablet + smaller laptops */
     @media (max-width: 980px) {
       .hero { grid-template-columns: 1fr; }
       .span-7, .span-5, .span-6 { grid-column: span 12; }
       .headshot { width: 160px; height: 160px; }
     }
 
-    @media (max-width: 560px) {
+    /* Mobile navigation dropdown */
+    #menuBtn { display: none; }
+
+    @media (max-width: 760px) {
+      .container { padding: 18px; }
       .topbar-inner { padding: 12px 14px; }
-      nav { display: none; }
-      .hero-card { padding: 18px; }
-      .actions { width: 100%; min-width: unset; }
-      .actions .btn { flex: 1; }
-      .btn { width: 100%; }
+
+      #menuBtn { display: inline-flex; }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 62px;
+        left: 14px;
+        right: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius2);
+        background: color-mix(in srgb, var(--bg2) 90%, transparent);
+        box-shadow: var(--shadow);
+      }
+
+      nav.open { display: flex; }
+
+      .navlink {
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        background: var(--card);
+      }
+
+      .actions { min-width: unset; }
+    }
+
+    /* Small phones */
+    @media (max-width: 560px) {
+      .actions { width: auto; }
+      .btn { padding: 10px 11px; }
       .grid-2 { grid-template-columns: 1fr; }
       .field { grid-column: span 12; }
     }
@@ -502,7 +534,7 @@
     }
   </style>
 
-  <!-- Structured data (basic) -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -533,7 +565,7 @@
         </div>
       </a>
 
-      <nav aria-label="Site">
+      <nav id="siteNav" aria-label="Site">
         <a class="navlink" href="#impact">Impact</a>
         <a class="navlink" href="#resume">Resume</a>
         <a class="navlink" href="#projects">Projects</a>
@@ -542,6 +574,7 @@
       </nav>
 
       <div class="actions">
+        <button class="btn" id="menuBtn" type="button" aria-label="Open menu">Menu</button>
         <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">Toggle</button>
         <a class="btn btn-primary" href="#contact">Let’s talk</a>
       </div>
@@ -549,12 +582,13 @@
   </header>
 
   <main class="container" id="home">
-    <!-- HERO / HOMEPAGE -->
+    <!-- HERO -->
     <div class="hero">
       <div class="hero-card">
         <div class="hero-content">
           <div class="kicker">AI-Enabled Operations • ERP Governance • Decision Intelligence</div>
           <h1>Building faster, smarter, and more resilient execution systems at enterprise scale.</h1>
+
           <p class="headline">
             I’m <strong>Jason Howie</strong> — a VP-level transformation leader modernizing global operations, logistics, procurement and supply chain in regulated and industrial environments.
             I blend operating model design, automation, analytics, and ERP governance (SAP S/4HANA P2P) to improve service performance, working capital, and resiliency.
@@ -576,28 +610,19 @@
           <div style="margin-top: 14px; border: 1px solid var(--border); border-radius: var(--radius2); background: color-mix(in srgb, var(--card2) 70%, transparent); padding: 14px;">
             <div style="font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px;">Top outcomes</div>
             <ul class="list" style="margin:0;">
-             <li><strong>AI transformation executive</strong> modernizing procurement, supply chain, and manufacturing by embedding automation, decision intelligence, and scalable operating models.</li>
-             <li><strong>Builds enterprise execution systems</strong> that improve speed, resiliency, and performance through standardization, governance, and workflow redesign.</li>
-             <li><strong>Creates predictive visibility</strong> and leadership dashboards that turn operational signals into actionable decisions and faster outcomes.</li>
-             <li><strong>Customer-first MedTech partner</strong>, collaborating directly with hospitals and physicians to improve throughput and accelerate speed-to-care.</li>
-             <li><strong>Trusted leader aligning people, process, and technology</strong>—driving adoption, accountability, and sustainable change at scale.</li>
-             </ul>
+              <li><strong>AI transformation executive</strong> modernizing procurement, supply chain, and manufacturing by embedding automation, decision intelligence, and scalable operating models</li>
+              <li><strong>Builds enterprise execution systems</strong> that improve speed, resiliency, and performance through standardization, governance, and workflow redesign</li>
+              <li><strong>Creates predictive visibility</strong> and leadership dashboards that turn operational signals into actionable decisions and faster outcomes</li>
+              <li><strong>Customer-first MedTech partner</strong>, collaborating with hospitals and physicians to improve throughput and speed-to-care</li>
+              <li><strong>Trusted leader aligning people, process, and technology</strong>—driving adoption and sustainable change at scale</li>
+            </ul>
           </div>
-
-          <p style="margin-top: 12px; color: var(--muted2); font-size: 13px; line-height: 1.5;">
-            <span style="font-family: var(--mono);">GitHub Pages tip:</span> Upload <strong>index.html</strong>, <strong>headshot.jpg</strong>, and <strong>Jason_Howie_Resume_2026.pdf</strong> to your repo root.
-          </p>
         </div>
       </div>
 
-      <!-- PROFILE PICTURE (prominent) -->
+      <!-- PROFILE -->
       <aside class="profile" aria-label="Profile">
         <div class="headshot" aria-label="Profile photo">
-          <!--
-            IMPORTANT:
-            - Put your photo in the repo root and name it: headshot.jpg
-            - If you prefer PNG, change src to headshot.png and upload that file.
-          -->
           <img
             src="headshot.jpg"
             alt="Jason Howie profile picture"
@@ -610,7 +635,7 @@
 
         <div class="profile-name">Jason Howie</div>
         <div class="profile-title">
-          VP Transformation • Global Procurement & Supply Chain
+          VP Transformation • Global Procurement &amp; Supply Chain
           <br />AI-enabled operating systems • Working capital • OTD
         </div>
 
@@ -646,276 +671,253 @@
       </aside>
     </div>
 
-   <section id="highlights">
-  <h2 class="section-title">Executive Highlights</h2>
+    <!-- IMPACT / HIGHLIGHTS -->
+    <section id="impact">
+      <h2 class="section-title">Executive Highlights</h2>
 
-  <div class="cards">
+      <div class="cards">
         <div class="card span-12">
-          <h3 style="margin: 0 0 10px;">Executive Highlights</h3>
+          <h3 style="margin: 0 0 10px;">Signature Impact</h3>
           <ul class="list">
             <li><strong>100% on-time delivery</strong> with <strong>zero missed implant orders</strong> through COVID disruption—enabled by predictive risk signals and proactive mitigation (not inventory stockpiling).</li>
             <li>Led <strong>global transformation</strong> across procurement, supply chain, and manufacturing—improving resiliency, scalability, and execution performance in regulated and industrial environments.</li>
-            <li>Delivered <strong>AI-enabled modernization</strong> by integrating automation, proactive analytics, and exception-based management to accelerate decisions and strengthen performance control.</li>
+            <li>Delivered <strong>AI-enabled modernization</strong> integrating automation, proactive analytics, and exception-based management to strengthen performance control.</li>
           </ul>
         </div>
 
         <div class="card span-6">
           <h3 style="margin: 0 0 10px;">Enterprise Leadership</h3>
           <ul class="list">
-            <li>Owned <strong>SAP S/4HANA P2P governance</strong> globally—driving workflow standardization, controls, and adoption across <strong>US / EU / APAC / LATAM</strong>.</li>
-            <li>Standardized purchasing and materials management across regions—strengthening <strong>SIOP execution</strong>, reducing variability, and enabling consistent performance at scale.</li>
-            <li>Built enterprise <strong>risk and continuity</strong> capability—deploying early constraint visibility and mitigation playbooks tied to near- and long-term scalability.</li>
-            <li>Shifted performance management from reactive reporting to proactive execution—building <strong>predictive dashboards</strong> and KPI governance to improve decision speed.</li>
+            <li>Owned <strong>SAP S/4HANA P2P governance</strong> globally—workflow standardization, controls, and adoption across <strong>US / EU / APAC / LATAM</strong>.</li>
+            <li>Built enterprise <strong>risk and continuity</strong> capability—early constraint visibility + mitigation playbooks.</li>
+            <li>Shifted performance management to proactive execution—<strong>predictive dashboards</strong> and KPI governance improving decision speed.</li>
           </ul>
         </div>
 
         <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Customer &amp; Growth Enablement</h3>
+          <h3 style="margin: 0 0 10px;">Customer &amp; Growth</h3>
           <ul class="list">
-            <li>Partnered directly with hospitals and physicians to improve throughput and accelerate <strong>speed-to-care</strong> through workflow redesign and standardized handoffs.</li>
-            <li>Designed and delivered a <strong>new product launch operating model</strong>, assessing internal vs external capabilities and recommending a scalable partner ecosystem.</li>
-            <li>Delivered repeatable sourcing value and supplier performance improvement—strengthening continuity, accountability, cost competitiveness, and <strong>working capital</strong>.</li>
+            <li>Partnered with hospitals and physicians to accelerate <strong>speed-to-care</strong> through workflow redesign and standardized handoffs.</li>
+            <li>Designed a new product launch operating model + scalable partner ecosystem to accelerate speed-to-market.</li>
+            <li>Delivered repeatable sourcing value + supplier performance improvement strengthening continuity and <strong>working capital</strong>.</li>
           </ul>
         </div>
 
         <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Signature transformation plays</h3>
+          <h3 style="margin: 0 0 10px;">Signature Plays</h3>
           <div class="taggrid">
-            <span class="tag">Standardize + govern end-to-end processes</span>
-            <span class="tag">Build ERP-first execution systems</span>
-            <span class="tag">Create predictive risk visibility</span>
-            <span class="tag">Stabilize service with cadence + controls</span>
-            <span class="tag">Optimize working capital by exceptions</span>
-            <span class="tag">Scale outcomes via partner ecosystems</span>
+            <span class="tag">Standardize + govern end-to-end</span>
+            <span class="tag">ERP-first execution systems</span>
+            <span class="tag">Predictive risk visibility</span>
+            <span class="tag">Cadence + controls</span>
+            <span class="tag">Working capital by exceptions</span>
+            <span class="tag">Partner ecosystems</span>
           </div>
         </div>
 
         <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Best-in-class approach</h3>
+          <h3 style="margin: 0 0 10px;">Operating Approach</h3>
           <ul class="list">
-            <li><strong>Outcome-first:</strong> define metrics and owners up front (service, cost, cash)</li>
-            <li><strong>Systems thinking:</strong> operating model + process + data + governance</li>
-            <li><strong>Execution reliability:</strong> standard work, controls, and performance routines</li>
-            <li><strong>AI responsibly:</strong> human-in-the-loop controls and risk-based governance</li>
+            <li><strong>Outcome-first:</strong> define owners + metrics (service, cost, cash)</li>
+            <li><strong>Systems thinking:</strong> operating model + process + governance</li>
+            <li><strong>Execution reliability:</strong> standard work + performance routines</li>
+            <li><strong>AI responsibly:</strong> human-in-the-loop + risk-based controls</li>
           </ul>
         </div>
       </div>
     </section>
 
-   <!-- EDUCATION / CERTS / SKILLS (BOTTOM FULL WIDTH) -->
-    <div class="card span-12">
-      <h3 style="margin: 0 0 10px;">Education</h3>
-      <ul class="list">
-        <li><strong>MBA</strong>, Texas A&amp;M University</li>
-        <li><strong>BBA</strong>, International Business, Texas A&amp;M University</li>
-        <li><strong>Executive Leadership</strong>, Strathclyde University (Glasgow, UK)</li>
-      </ul>
+    <!-- RESUME -->
+    <section id="resume">
+      <h2 class="section-title">Resume</h2>
 
-      <h3 style="margin: 18px 0 10px;">Certifications</h3>
-      <ul class="list">
-        <li>SAP S/4 Global Process Owner (P2P) — 2024</li>
-        <li>SAP Key User — 2016</li>
-        <li>Lean Six Sigma Black Belt (Villanova) — 2014</li>
-        <li>APICS (PPIM) — 2014</li>
-        <li>Shingo: Discover Excellence — 2016</li>
-        <li>Lean Six Sigma Green Belt — 2009</li>
-      </ul>
+      <div class="cards">
+        <div class="card span-7">
+          <h3 style="margin: 0 0 10px;">Executive Experience</h3>
 
-      <h3 style="margin: 18px 0 10px;">Skills</h3>
-      <div class="taggrid" aria-label="Skills tags">
-        <span class="tag">Applied GenAI Strategy</span>
-        <span class="tag">AI Operating Model</span>
-        <span class="tag">AI Workflow Automation</span>
-        <span class="tag">Decision Intelligence</span>
-        <span class="tag">AI Governance</span
+          <div class="timeline" aria-label="Executive Experience">
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">LivaNova — Global Director, Supply &amp; Procurement</div>
+                <div class="role-meta">2021–Present</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Delivered <strong>30% improvement in working capital</strong> by modernizing global execution through automation, analytics, and governance.</li>
+                  <li>Sustained <strong>99% OTD</strong> (Neuromodulation) and <strong>&gt;90% OTD</strong> (Cardiopulmonary) across global manufacturing.</li>
+                  <li>Maintained <strong>100% OTD</strong> with <strong>zero missed implant orders</strong> through COVID disruption using predictive risk signals.</li>
+                  <li>Built enterprise predictive dashboards + KPI governance improving executive decision speed.</li>
+                  <li>Served as <strong>SAP S/4HANA Global Process Owner (P2P)</strong> standardizing workflows across regions.</li>
+                </ul>
+              </div>
+            </div>
 
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">LivaNova — Global Sr. Manager, Sourcing / Procurement / Distribution / Logistics</div>
+                <div class="role-meta">2018–2021</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Delivered <strong>$10M+</strong> sourcing savings and reduced inventory <strong>$15M+</strong> using VMI and PFEP discipline.</li>
+                  <li>Built reporting automation and KPI scorecards strengthening accountability and visibility.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">TEAM — Global Inventory &amp; Procurement Manager</div>
+                <div class="role-meta">2017–2018</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Lean transformation across <strong>3 manufacturing sites + 42 operational sites</strong>; waste down <strong>63%</strong>, efficiency up <strong>50%</strong>.</li>
+                  <li>Lead time reduced <strong>14 days → 48 hours</strong> through material flow redesign and controls.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">Pentair — Materials Manager</div>
+                <div class="role-meta">2015–2017</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Delivered <strong>$20M inventory reduction</strong> and improved lead times <strong>28%</strong>.</li>
+                  <li>Selected as <strong>Global PFEP Leader</strong> standardizing best practices.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">WEIR — Manufacturing Plant Manager</div>
+                <div class="role-meta">2013–2015</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Improved OTD <strong>10% → 87%</strong>, lead time <strong>12 weeks → 6 weeks</strong>, overtime down <strong>70%</strong>.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">Total Safety — Operational Excellence Manager</div>
+                <div class="role-meta">2007–2013</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Built scalable service execution systems improving compliance and consistency.</li>
+                  <li>Increased customer relationships and sales <strong>20%</strong> with bundled solutions.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="role">
+              <div class="role-head">
+                <div class="role-title">United States Air Force — Staff Sergeant</div>
+                <div class="role-meta">2000–2008</div>
+              </div>
+              <div class="role-desc">
+                <ul class="list">
+                  <li>Led teams in mission-critical environments with discipline, readiness, and execution under pressure.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card span-5">
+          <h3 style="margin: 0 0 10px;">Education</h3>
+          <ul class="list">
+            <li><strong>MBA</strong>, Texas A&amp;M University</li>
+            <li><strong>BBA</strong>, International Business, Texas A&amp;M University</li>
+            <li><strong>Executive Leadership</strong>, Strathclyde University (Glasgow, UK)</li>
+          </ul>
+
+          <h3 style="margin: 18px 0 10px;">Certifications</h3>
+          <ul class="list">
+            <li>SAP S/4 Global Process Owner (P2P) — 2024</li>
+            <li>Lean Six Sigma Black Belt (Villanova) — 2014</li>
+            <li>APICS (PPIM) — 2014</li>
+            <li>Shingo: Discover Excellence — 2016</li>
+          </ul>
+
+          <h3 style="margin: 18px 0 10px;">Skills</h3>
+          <div class="taggrid" aria-label="Skills tags">
+            <span class="tag">Applied GenAI Strategy</span>
+            <span class="tag">AI Operating Model</span>
+            <span class="tag">Decision Intelligence</span>
+            <span class="tag">AI Governance</span>
+            <span class="tag">Global Procurement</span>
+            <span class="tag">Working Capital</span>
+            <span class="tag">S&amp;OP / SIOP</span>
+            <span class="tag">SAP S/4HANA (P2P)</span>
+            <span class="tag">Analytics Automation</span>
+          </div>
+
+          <div style="margin-top: 16px;">
+            <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">View PDF Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PROJECTS -->
     <section id="projects">
       <h2 class="section-title">Projects</h2>
+
       <div class="cards">
         <div class="card span-6">
           <h3 style="margin: 0 0 10px;">18-Month Product Launch Operating Model</h3>
           <ul class="list">
-            <li>Selected to evaluate launch requirements and deliver a scalable solution within <strong>18 months</strong>.</li>
-            <li>Aligned internal capabilities with best-in-class partners; built operating model and presented recommendations to the ELT.</li>
-            <li>Enabled speed-to-market and rapid scalability through process design + partner ecosystem strategy.</li>
+            <li>Built scalable partner ecosystem and operating model; presented recommendations to the ELT.</li>
+            <li>Enabled speed-to-market and rapid scalability through process design + execution governance.</li>
           </ul>
         </div>
 
         <div class="card span-6">
           <h3 style="margin: 0 0 10px;">Hospital + Physician Throughput Improvement</h3>
           <ul class="list">
-            <li>Selected to lead a high-visibility initiative with hospital leadership and physicians.</li>
-            <li>Reduced time-to-therapy/surgery by redesigning workflows, standardizing handoffs, and eliminating delays.</li>
-            <li>Improved patient velocity and execution reliability through disciplined operational design.</li>
+            <li>Redesigned workflows and standardized handoffs to accelerate speed-to-care and patient throughput.</li>
           </ul>
         </div>
 
         <div class="card span-12">
           <h3 style="margin: 0 0 10px;">AI + Digital Transformation Portfolio</h3>
           <ul class="list">
-            <li><strong>Procurement Intelligence Copilot</strong>: standardized policy/SOP search + structured decision summaries (risk, lead time, cost drivers).</li>
-            <li><strong>Supplier Risk Early-Warning</strong>: automated monitoring of OTD/quality/variability signals with executive-ready mitigation actions.</li>
-            <li><strong>Working Capital Optimization Engine</strong>: exception-based analytics + KPI automation to reduce inventory lock-up across RM/WIP/FG.</li>
+            <li><strong>Procurement Intelligence Copilot</strong>: policy/SOP search + structured decision summaries.</li>
+            <li><strong>Supplier Risk Early-Warning</strong>: automated monitoring with executive mitigation actions.</li>
+            <li><strong>Working Capital Optimization</strong>: exception-based analytics reducing inventory lock-up.</li>
           </ul>
-          <p style="margin: 10px 0 0; color: var(--muted2); font-size: 13px; line-height: 1.55;">
-            Focus: measurable outcomes (service, cycle time, cost, working capital) backed by governance + human-in-the-loop controls.
-          </p>
         </div>
       </div>
     </section>
 
-<!-- RESUME SECTION -->
-<section id="resume">
-  <h2 class="section-title">Resume</h2>
-
-  <div class="cards">
-
-    <!-- EXPERIENCE (FULL WIDTH) -->
-    <div class="card span-12">
-      <h3 style="margin: 0 0 10px;">Executive Experience</h3>
-
-      <div class="timeline" aria-label="Executive Experience">
-
-        <!-- LivaNova: Global Director -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">LivaNova (Class II/III MedTech) — Global Director, Supply &amp; Procurement</div>
-            <div class="role-meta">2021–Present</div>
-          </div>
-          <div class="role-desc">
-            <p style="margin:0 0 10px;">
-              Enterprise leader driving global procurement, materials, and supply execution across Cardiopulmonary &amp; Neuromodulation.
-            </p>
-
-            <p style="margin:0 0 12px; color: var(--muted2); font-size: 13px; line-height: 1.5;">
-              <strong>Scope:</strong> US/EU/APAC • 5 manufacturing sites • 50+ distribution sites • $2B–$150M spend influence •
-              $100M inventory influence • 20 direct / 100+ total team
-            </p>
-
-            <ul class="list">
-              <li>Delivered <strong>30% improvement in working capital</strong> through automation, analytics, and execution governance.</li>
-              <li>Sustained <strong>99% OTD</strong> (Neuromodulation) and <strong>&gt;90% OTD</strong> (Cardiopulmonary) across global manufacturing networks.</li>
-              <li>Maintained <strong>100% OTD</strong> with <strong>zero missed implant orders</strong> through COVID disruption—enabled by predictive risk signals and mitigation <strong>without excess inventory buffers</strong>.</li>
-              <li>Built the company’s first <strong>enterprise predictive dashboard</strong> and KPI governance to increase decision speed and risk visibility.</li>
-              <li>Served as <strong>SAP S/4HANA Global Process Owner (P2P)</strong>, standardizing workflows and adoption across regions.</li>
-              <li>Partnered with hospitals and physicians to improve throughput and accelerate speed-to-care through workflow redesign and standardized handoffs.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- LivaNova: Global Sr Manager -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">LivaNova (MedTech) — Global Sr. Manager, Sourcing / Procurement / Distribution / Logistics</div>
-            <div class="role-meta">2018–2021</div>
-          </div>
-          <div class="role-desc">
-            <ul class="list">
-              <li>Delivered <strong>$10M+</strong> sourcing savings through category strategy, supplier leverage, and performance governance.</li>
-              <li>Reduced inventory <strong>$15M+</strong> using VMI, PFEP discipline, lead-time reduction, and replenishment controls.</li>
-              <li>Built ERP-driven dashboards and KPI scorecards improving accountability and execution visibility.</li>
-              <li>Optimized distribution/logistics performance while protecting service levels and working capital.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- TEAM -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">TEAM — Global Inventory &amp; Procurement Manager</div>
-            <div class="role-meta">2017–2018</div>
-          </div>
-          <div class="role-desc">
-            <ul class="list">
-              <li>Led lean transformation across <strong>3 manufacturing sites + 42 operational sites</strong>, reducing waste <strong>63%</strong> and improving efficiency <strong>50%</strong>.</li>
-              <li>Compressed lead time from <strong>14 days → 48 hours</strong> through material flow redesign and execution controls.</li>
-              <li>Implemented <strong>AX Dynamics</strong> and strengthened master data governance enabling predictable planning and purchasing.</li>
-              <li>Built first formal <strong>S&amp;OP</strong> process for a core product line to improve demand visibility and alignment.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Pentair -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">Pentair — Materials Manager, Valves &amp; Controls</div>
-            <div class="role-meta">2015–2017</div>
-          </div>
-          <div class="role-desc">
-            <ul class="list">
-              <li>Reduced lead times <strong>28%</strong>, improved supplier delivery <strong>13%</strong>, and increased throughput <strong>35%</strong> through PFEP/pull execution.</li>
-              <li>Delivered <strong>$20M inventory reduction</strong> (vs $10M target) through replenishment controls and elimination of excess/obsolete stock.</li>
-              <li>Selected as <strong>Global PFEP Leader</strong>, standardizing best practices from suppliers through distribution.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- WEIR -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">WEIR — Manufacturing Plant Manager</div>
-            <div class="role-meta">2013–2015</div>
-          </div>
-          <div class="role-desc">
-            <ul class="list">
-              <li>Improved OTD <strong>10% → 87%</strong> and reduced lead time <strong>12 weeks → 6 weeks</strong> through operating system redesign.</li>
-              <li>Delivered <strong>$2M annual savings</strong> through facility re-layout, flow optimization, and labor efficiency improvements.</li>
-              <li>Reduced freight costs <strong>30%</strong> through logistics redesign and optimized scheduling.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Total Safety -->
-        <div class="role">
-          <div class="role-head">
-            <div class="role-title">Total Safety — Operational Excellence Manager</div>
-            <div class="role-meta">2007–2013</div>
-          </div>
-          <div class="role-desc">
-            <ul class="list">
-              <li>Built scalable service execution systems across industrial operations, improving consistency and compliance.</li>
-              <li>Increased customer relationships and sales <strong>20%</strong> through bundled multi-line solutions.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- USAF -->
-<div class="role">
-  <div class="role-head">
-    <div class="role-title">United States Air Force — Staff Sergeant</div>
-    <div class="role-meta">2000–2008</div>
-  </div>
-
-  <div class="role-desc">
-    <ul class="list">
-      <li>Led teams in mission-critical environments, building structured problem-solving, accountability, and readiness leadership.</li>
-    </ul>
-  </div> <!-- /role-desc -->
-</div> <!-- /role -->
-
-</div> <!-- /timeline -->
-</div> <!-- /card span-12 (experience) -->
-    
-    <!-- CONTACT -->
+    <!-- LEADERSHIP -->
     <section id="leadership">
       <h2 class="section-title">Leadership</h2>
+
       <div class="cards">
         <div class="card span-7">
           <h3 style="margin: 0 0 10px;">How I lead</h3>
           <ul class="list">
-            <li><strong>Clarity:</strong> align teams on the 2–3 outcomes that matter most and measure them weekly.</li>
+            <li><strong>Clarity:</strong> align teams on the outcomes that matter and measure them weekly.</li>
             <li><strong>Cadence:</strong> build operating routines that sustain results (not heroics).</li>
             <li><strong>Accountability:</strong> define owners, decisions, and escalation paths early.</li>
-            <li><strong>Velocity:</strong> simplify workflows and remove friction so teams can execute fast and safely.</li>
-            <li><strong>Talent:</strong> develop leaders by coaching problem-solving, not just task delivery.</li>
+            <li><strong>Velocity:</strong> remove friction so teams execute fast and safely.</li>
+            <li><strong>Talent:</strong> coach problem-solving and elevate leaders.</li>
           </ul>
         </div>
+
         <div class="card span-5">
           <h3 style="margin: 0 0 10px;">Trusted by</h3>
           <p style="margin:0; color: var(--muted); line-height: 1.58;">
-            I’ve delivered transformation outcomes across regulated MedTech, Energy, Oil & Gas, Manufacturing, and Services Indutries.
+            Delivered transformation outcomes across regulated MedTech, Energy, Manufacturing, and Industrial Services.
           </p>
           <div class="taggrid" style="margin-top: 12px;">
             <span class="tag">LivaNova</span>
@@ -925,23 +927,19 @@
             <span class="tag">TEAM</span>
             <span class="tag">US Air Force</span>
           </div>
-          <p style="margin-top: 12px; color: var(--muted2); font-size: 13px; line-height: 1.5;">
-          </p>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
       <h2 class="section-title">Contact</h2>
+
       <div class="cards">
         <div class="card span-7">
           <h3 style="margin: 0 0 10px;">Send a message</h3>
 
-          <form
-            id="contactForm"
-            action="https://formspree.io/f/yourFormId"
-            method="POST"
-          >
+          <form id="contactForm" action="https://formspree.io/f/yourFormId" method="POST">
             <div class="formgrid">
               <div class="field">
                 <label for="name">Name</label>
@@ -973,8 +971,6 @@
           <h3 style="margin: 0 0 10px;">Social</h3>
           <div class="taggrid">
             <a class="tag" href="https://www.linkedin.com/in/jasonhowie1" target="_blank" rel="noreferrer">LinkedIn</a>
-            <!-- Replace or add your profiles below -->
-            <a class="tag" href="#" onclick="alert('Add your Twitter/X link here'); return false;">Twitter/X</a>
             <a class="tag" href="https://github.com/jasonhowie01-cpu" target="_blank" rel="noreferrer">GitHub</a>
           </div>
 
@@ -982,7 +978,7 @@
           <div style="border: 1px solid var(--border); border-radius: var(--radius2); background: color-mix(in srgb, var(--card2) 70%, transparent); padding: 14px;">
             <div style="font-family: var(--mono); font-size: 12px; line-height: 1.55; color: var(--muted);">
               Hi — I’m Jason Howie. I lead AI-enabled operational transformation across procurement and supply chain.
-              I’d love to connect and explore where I can help drive service performance, resiliency, and working capital improvements.
+              I’d love to connect and explore how I can help drive service performance, resiliency, and working capital improvements.
             </div>
           </div>
 
@@ -1011,11 +1007,13 @@
       const root = document.documentElement;
       const themeBtn = document.getElementById('themeBtn');
       const yearEl = document.getElementById('year');
+      const menuBtn = document.getElementById('menuBtn');
+      const nav = document.getElementById('siteNav');
 
       // Footer year
       yearEl.textContent = String(new Date().getFullYear());
 
-      // Theme toggle with localStorage
+      // Theme toggle
       const stored = localStorage.getItem('theme');
       if (stored === 'light') root.setAttribute('data-theme', 'light');
       if (stored === 'dark') root.setAttribute('data-theme', 'dark');
@@ -1029,18 +1027,33 @@
 
       themeBtn.addEventListener('click', toggleTheme);
 
-      // Default theme if none stored: match system
       if (!stored) {
         const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
         root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
       }
 
-      // Basic contact form validation (client-side)
-      // Note: Provider handles actual sending (Formspree / etc.)
+      // Mobile menu toggle
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', () => {
+          nav.classList.toggle('open');
+        });
+
+        // Close nav when clicking a link
+        nav.querySelectorAll('a').forEach(a => {
+          a.addEventListener('click', () => nav.classList.remove('open'));
+        });
+      }
+
+      // Print / Save PDF
+      const printBtn = document.getElementById('printBtn');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => window.print());
+      }
+
+      // Contact form fallback
       const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('submit', (e) => {
-          // If Formspree isn't configured yet, fall back to opening the user's email client.
           if ((form.getAttribute('action') || '').includes('yourFormId')) {
             e.preventDefault();
             const name = (document.getElementById('name') || {}).value || '';
@@ -1051,12 +1064,6 @@
             window.location.href = `mailto:Jason.howie01@gmail.com?subject=${subject}&body=${body}`;
           }
         });
-      }
-
-      // Print / Save PDF
-      const printBtn = document.getElementById('printBtn');
-      if (printBtn) {
-        printBtn.addEventListener('click', () => window.print());
       }
     })();
   </script>
