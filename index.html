@@ -1,1071 +1,639 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Basic SEO -->
   <title>Jason Howie | Executive Transformation Leader</title>
-  <meta name="description" content="Jason Howie — VP-level transformation leader modernizing global operations, logistics, procurement and supply chain with AI-enabled execution, ERP governance, and analytics." />
-  <meta name="keywords" content="Jason Howie, operations, procurement, supply chain, transformation, AI, GenAI, SAP S/4HANA, P2P, operating model, working capital, on-time delivery" />
+  <meta name="description" content="AI-enabled operations executive modernizing procurement, supply chain, and manufacturing through automation, decision intelligence, and scalable operating models." />
+  <meta name="keywords" content="Jason Howie, AI transformation, operations, procurement, supply chain, manufacturing, SAP S/4HANA, governance, analytics, decision intelligence" />
   <meta name="author" content="Jason Howie" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Jason Howie | Executive Transformation Leader" />
-  <meta property="og:description" content="VP-level transformation leader modernizing global procurement & supply chain through AI-enabled execution systems." />
+  <meta property="og:description" content="AI-enabled operations and execution systems across procurement, supply chain, and manufacturing." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="headshot.jpg" />
 
   <style>
-    :root {
-      --bg: #0b1020;
-      --bg2: #0f1730;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.095);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --muted2: rgba(255,255,255,0.56);
-      --border: rgba(255,255,255,0.10);
-      --accent: #76c7ff;
-      --accent2: #8cffc5;
-      --shadow: 0 18px 50px rgba(0,0,0,0.45);
-      --radius: 18px;
-      --radius2: 24px;
-      --max: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    :root{
+      --bg:#070a12;
+      --panel:#0d1222;
+      --panel2:#0b1020;
+      --ink:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --muted2:rgba(255,255,255,.56);
+      --line:rgba(255,255,255,.12);
+      --soft:rgba(255,255,255,.06);
+      --accent:#76c7ff;
+      --accent2:#8cffc5;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1180px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
     }
 
-    /* Light mode */
-    [data-theme="light"] {
-      --bg: #f6f7fb;
-      --bg2: #ffffff;
-      --card: rgba(0,0,0,0.035);
-      --card2: rgba(0,0,0,0.06);
-      --text: rgba(0,0,0,0.90);
-      --muted: rgba(0,0,0,0.65);
-      --muted2: rgba(0,0,0,0.50);
-      --border: rgba(0,0,0,0.10);
-      --accent: #0b67ff;
-      --accent2: #0aa36c;
-      --shadow: 0 18px 50px rgba(10,18,45,0.12);
+    [data-theme="light"]{
+      --bg:#f7f8fc;
+      --panel:#ffffff;
+      --panel2:#ffffff;
+      --ink:#0b1220;
+      --muted:#4b5565;
+      --muted2:#6b7280;
+      --line:#e7e9f0;
+      --soft:#f4f6fb;
+      --accent:#0b3a7a;
+      --accent2:#0b67ff;
+      --shadow:0 14px 32px rgba(12,18,32,.10);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      color: var(--text);
-      background: radial-gradient(1200px 800px at 20% -10%, rgba(118,199,255,0.22), transparent 55%),
-                  radial-gradient(1000px 700px at 95% 0%, rgba(140,255,197,0.20), transparent 55%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
-      min-height: 100vh;
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 720px at 10% -10%, color-mix(in srgb, var(--accent2) 30%, transparent), transparent 60%),
+        radial-gradient(1000px 700px at 98% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+        linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 80%, #ffffff 20%));
+      min-height:100vh;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.92; }
 
-    a { color: inherit; text-decoration: none; }
-    a:hover { opacity: 0.92; }
-
-    .container { width: min(100%, var(--max)); margin: 0 auto; padding: 24px; }
-
-    /* Top nav */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--bg2) 65%, transparent);
-      border-bottom: 1px solid var(--border);
+    .container{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      padding:18px;
     }
 
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 14px 24px;
-      width: min(100%, var(--max));
-      margin: 0 auto;
-      position: relative;
+    /* Top navigation */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      background:color-mix(in srgb, var(--panel) 82%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      width:min(100%, var(--max));
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:220px;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius:12px;
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      border:1px solid var(--line);
+      box-shadow:0 12px 22px rgba(0,0,0,.18);
+    }
+    .brand strong{ display:block; font-size:14px; letter-spacing:.02em; }
+    .brand span{ display:block; font-size:12px; color:var(--muted2); margin-top:2px; }
+
+    .nav{
+      display:flex; align-items:center; gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .nav a{
+      font-size:13px;
+      font-weight:800;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav a:hover{
+      color:var(--ink);
+      background:var(--soft);
+      border-color:var(--line);
     }
 
-    .brand { display: flex; align-items: center; gap: 10px; min-width: 220px; }
-
-    .brandmark {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 26px rgba(0,0,0,0.25);
-      border: 1px solid var(--border);
+    .actions{
+      display:flex; align-items:center; gap:10px;
+      min-width:220px;
+      justify-content:flex-end;
     }
 
-    .brand-title { font-weight: 800; letter-spacing: 0.2px; }
-    .brand-sub { font-size: 12px; color: var(--muted2); margin-top: 1px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:color-mix(in srgb, var(--panel) 90%, transparent);
+      color:var(--ink);
+      font-weight:800;
+      font-size:13px;
+      cursor:pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 12px 18px rgba(0,0,0,.10); }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color:color-mix(in srgb, var(--accent) 55%, var(--line) 45%);
+      color:#061024;
+    }
+    .btn-ghost{ background:transparent; }
 
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
+    .menuBtn{ display:none; }
+    .mobileNav{
+      display:none;
+      border-top:1px solid var(--line);
+      padding:10px 14px 14px;
+    }
+    .mobileNav a{
+      display:block;
+      margin-top:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:var(--soft);
+      color:var(--muted);
+      font-weight:800;
     }
 
-    .navlink {
-      padding: 9px 10px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      border: 1px solid transparent;
+    /* HERO */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:
+        radial-gradient(800px 360px at 18% 0%, color-mix(in srgb, var(--accent2) 25%, transparent), transparent 62%),
+        radial-gradient(740px 360px at 90% 10%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 58%),
+        color-mix(in srgb, var(--panel) 88%, transparent);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      padding:26px;
+      align-items:start;
+    }
+    .kicker{
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(30px, 3.2vw, 48px);
+      letter-spacing:-.03em;
+      line-height:1.06;
+    }
+    .subhead{
+      margin-top:12px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+      max-width: 70ch;
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .facts{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:13px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 10px;
+      background:color-mix(in srgb, var(--soft) 70%, transparent);
     }
 
-    .navlink:hover {
-      border-color: var(--border);
-      background: var(--card);
-      color: var(--text);
+    /* Right card (photo + achievements) */
+    .heroCard{
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:color-mix(in srgb, var(--panel) 92%, transparent);
+      padding:18px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.10);
     }
-
-    .actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      min-width: 220px;
+    .photo{
+      width:150px; height:150px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      margin:6px auto 10px;
+      background:var(--soft);
     }
-
-    .btn {
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 13px;
-      transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      white-space: nowrap;
+    .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .who{
+      text-align:center;
+      font-weight:900;
+      letter-spacing:-.02em;
+      font-size:18px;
+      margin:0;
     }
-
-    .btn:hover { transform: translateY(-1px); background: var(--card2); }
-
-    .btn-primary {
-      background: linear-gradient(135deg,
-        color-mix(in srgb, var(--accent) 85%, #ffffff 15%),
-        color-mix(in srgb, var(--accent2) 80%, #ffffff 20%));
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border) 45%);
-      color: #051126;
+    .who2{
+      text-align:center;
+      color:var(--muted2);
+      font-size:13px;
+      line-height:1.4;
+      margin-top:6px;
     }
-
-    /* Hero */
-    .hero {
-      padding: 44px 0 10px;
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 16px;
-      align-items: start;
+    .ach{
+      margin-top:14px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
     }
-
-    .hero-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      overflow: hidden;
-      position: relative;
+    .ach ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:13px;
     }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: radial-gradient(600px 260px at 5% 0%, rgba(118,199,255,0.25), transparent 55%),
-                  radial-gradient(600px 260px at 100% 10%, rgba(140,255,197,0.22), transparent 50%);
-      pointer-events: none;
-      opacity: 0.9;
+    .ach li{ margin:8px 0; }
+    .mini{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
     }
-
-    .hero-content { position: relative; }
-
-    .kicker {
-      font-family: var(--mono);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(28px, 3.8vw, 46px);
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-    }
-
-    .headline {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.58;
-      max-width: 62ch;
-    }
-
-    .meta {
-      margin-top: 14px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      color: var(--muted2);
-      font-size: 13px;
-    }
-
-    .pill {
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--card) 60%, transparent);
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    /* Profile card */
-    .profile {
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-
-    .headshot {
-      width: 180px;
-      height: 180px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      margin: 0 auto;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .headshot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .headshot-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      color: #051126;
-      letter-spacing: -0.02em;
-      font-size: 34px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-
-    .profile-name {
-      text-align: center;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-top: 14px;
-      font-size: 18px;
-    }
-
-    .profile-title {
-      text-align: center;
-      color: var(--muted2);
-      margin-top: 6px;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
-    .profile-links {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .profile-links a {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-size: 13px;
-      color: var(--muted);
-      background: color-mix(in srgb, var(--card2) 75%, transparent);
-    }
-
-    /* Stats */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .stat {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      padding: 16px;
-    }
-
-    .stat .num {
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: -0.02em;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .stat .lbl {
-      color: var(--muted2);
-      font-size: 13px;
-      line-height: 1.35;
-    }
+    .mini .btn{ flex:1; }
 
     /* Sections */
-    section { padding: 22px 0; }
-
-    .section-title {
-      font-size: 14px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      margin: 0 0 12px;
+    section{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      background:color-mix(in srgb, var(--panel) 94%, transparent);
+      box-shadow: 0 12px 26px rgba(0,0,0,.06);
+      padding:20px;
     }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      padding: 20px;
+    .sectionTitle{
+      margin:0 0 12px;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--muted2);
     }
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:14px;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:var(--soft);
+      padding:16px;
+    }
+    .panel h3{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:-.02em;
+    }
+    .panel p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+    .list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:14px;
+    }
+    .list li{ margin:8px 0; }
 
-    .cards {
-      display: grid;
+    .cases{
+      display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      gap:14px;
     }
-
-    .span-6 { grid-column: span 6; }
-    .span-7 { grid-column: span 7; }
-    .span-5 { grid-column: span 5; }
-    .span-12 { grid-column: span 12; }
-
-    .list {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.58;
-    }
-
-    .list li { margin: 6px 0; }
-
-    .taggrid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--card2) 80%, transparent);
-      padding: 8px 10px;
-      font-size: 13px;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .timeline { display: grid; gap: 12px; }
-
-    .role {
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      background: color-mix(in srgb, var(--card) 80%, transparent);
-      padding: 16px;
-    }
-
-    .role-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .role-title { font-weight: 850; letter-spacing: -0.01em; }
-    .role-meta { color: var(--muted2); font-size: 13px; }
-    .role-desc { margin-top: 10px; color: var(--muted); line-height: 1.58; }
-
-    /* Form */
-    .formgrid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .field {
+    .case{
       grid-column: span 6;
-      display: grid;
-      gap: 6px;
+      border:1px solid var(--line);
+      border-radius:20px;
+      background:var(--soft);
+      padding:16px;
+    }
+    .case.full{ grid-column: span 12; }
+    .case h4{
+      margin:0 0 8px;
+      font-size:15px;
+      letter-spacing:-.01em;
+    }
+    .case .meta{
+      font-size:12px;
+      color:var(--muted2);
+      font-family:var(--mono);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      margin-bottom:10px;
     }
 
-    .field.span-12 { grid-column: span 12; }
-
-    label { font-size: 13px; color: var(--muted2); }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--card2) 70%, transparent);
-      color: var(--text);
-      outline: none;
-      font-family: var(--sans);
-      font-size: 14px;
+    footer{
+      margin:22px 0 40px;
+      color:var(--muted2);
+      font-size:13px;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      padding-top:16px;
     }
 
-    input:focus, textarea:focus {
-      border-color: color-mix(in srgb, var(--accent) 55%, var(--border) 45%);
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent);
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .case{ grid-column: span 12; }
+      .actions{ min-width:unset; }
     }
-
-    textarea { min-height: 120px; resize: vertical; }
-
-    .formnote { color: var(--muted2); font-size: 13px; line-height: 1.5; margin-top: 10px; }
-
-    /* Footer */
-    footer { padding: 28px 0 46px; color: var(--muted2); font-size: 13px; }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
+    @media (max-width: 680px){
+      .nav{ display:none; }
+      .menuBtn{ display:inline-flex; }
+      .topbar-inner{ padding:12px 14px; }
+      .container{ padding:14px; }
+      .hero-inner{ padding:18px; }
     }
-
-    /* -----------------------------
-       RESPONSIVE IMPROVEMENTS
-    -------------------------------- */
-
-    /* Tablet + smaller laptops */
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .span-7, .span-5, .span-6 { grid-column: span 12; }
-      .headshot { width: 160px; height: 160px; }
-    }
-
-    /* Mobile navigation dropdown */
-    #menuBtn { display: none; }
-
-    @media (max-width: 760px) {
-      .container { padding: 18px; }
-      .topbar-inner { padding: 12px 14px; }
-
-      #menuBtn { display: inline-flex; }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 62px;
-        left: 14px;
-        right: 14px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        padding: 12px;
-        border: 1px solid var(--border);
-        border-radius: var(--radius2);
-        background: color-mix(in srgb, var(--bg2) 90%, transparent);
-        box-shadow: var(--shadow);
-      }
-
-      nav.open { display: flex; }
-
-      .navlink {
-        padding: 10px 12px;
-        border: 1px solid var(--border);
-        background: var(--card);
-      }
-
-      .actions { min-width: unset; }
-    }
-
-    /* Small phones */
-    @media (max-width: 560px) {
-      .actions { width: auto; }
-      .btn { padding: 10px 11px; }
-      .grid-2 { grid-template-columns: 1fr; }
-      .field { grid-column: span 12; }
-    }
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .btn { transition: none; }
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .btn{ transition:none; }
     }
   </style>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jason Howie",
-    "jobTitle": "Executive Transformation Leader",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "League City",
-      "addressRegion": "TX",
-      "addressCountry": "US"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/jasonhowie1"
-    ]
-  }
-  </script>
 </head>
 
 <body>
-  <header class="topbar" aria-label="Primary">
+  <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#home" aria-label="Go to top">
-        <div class="brandmark" aria-hidden="true"></div>
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="mark" aria-hidden="true"></div>
         <div>
-          <div class="brand-title">Jason Howie</div>
-          <div class="brand-sub">VP Level Transformation • Global Operations • Supply Chain • Continuous Improvement</div>
+          <strong>Jason Howie</strong>
+          <span>AI-Enabled Operations • Executive Transformation</span>
         </div>
       </a>
 
-      <nav id="siteNav" aria-label="Site">
-        <a class="navlink" href="#impact">Impact</a>
-        <a class="navlink" href="#resume">Resume</a>
-        <a class="navlink" href="#projects">Projects</a>
-        <a class="navlink" href="#leadership">Leadership</a>
-        <a class="navlink" href="#contact">Contact</a>
+      <nav class="nav" aria-label="Site">
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#impact">Impact</a>
+        <a href="#contact">Contact</a>
+        <a href="preview.html">Preview</a>
       </nav>
 
       <div class="actions">
-        <button class="btn" id="menuBtn" type="button" aria-label="Open menu">Menu</button>
-        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">Toggle</button>
-        <a class="btn btn-primary" href="#contact">Let’s talk</a>
+        <button class="btn btn-ghost menuBtn" id="menuBtn" type="button" aria-label="Menu">Menu</button>
+        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">Theme</button>
+        <a class="btn btn-primary" href="#contact">Let’s Connect</a>
       </div>
     </div>
+
+    <nav class="mobileNav" id="mobileNav" aria-label="Mobile">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#impact">Impact</a>
+      <a href="#contact">Contact</a>
+      <a href="preview.html">Preview</a>
+    </nav>
   </header>
 
-  <main class="container" id="home">
+  <main class="container" id="top">
     <!-- HERO -->
-    <div class="hero">
-      <div class="hero-card">
-        <div class="hero-content">
-          <div class="kicker">AI-Enabled Operations • ERP Governance • Decision Intelligence</div>
-          <h1>Building faster, smarter, and more resilient execution systems at enterprise scale.</h1>
-
-          <p class="headline">
-            I’m <strong>Jason Howie</strong> — a VP-level transformation leader modernizing global operations, logistics, procurement and supply chain in regulated and industrial environments.
-            I blend operating model design, automation, analytics, and ERP governance (SAP S/4HANA P2P) to improve service performance, working capital, and resiliency.
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">AI + Operations • Decision Intelligence • Execution Systems</div>
+          <h1>Modernizing enterprise execution—so teams move faster, stay resilient, and deliver reliably.</h1>
+          <p class="subhead">
+            I’m <strong>Jason Howie</strong>, an executive transformation leader aligning <strong>people, process, and technology</strong> to build scalable,
+            AI-enabled operating models across procurement, supply chain, and manufacturing—especially in regulated and high-consequence environments.
           </p>
 
-          <div class="meta" aria-label="Quick facts">
-            <span class="pill">Global: US / EU / APAC</span>
-            <span class="pill">MedTech • Energy • Services</span>
-            <span class="pill">Strategy-Roadmap-Portfolio</span>
-            <span class="pill">Adoption-Change management-Operating model</span>
-            <span class="pill">Automation-Decision intelligence-Optimization </span>
-          </div>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Download Résumé (PDF)</a>
+          <div class="ctaRow">
+            <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Download Resume (PDF)</a>
             <a class="btn" href="mailto:Jason.howie01@gmail.com">Email</a>
             <a class="btn" href="https://www.linkedin.com/in/jasonhowie1" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
 
-          <div style="margin-top: 14px; border: 1px solid var(--border); border-radius: var(--radius2); background: color-mix(in srgb, var(--card2) 70%, transparent); padding: 14px;">
-            <div style="font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px;">Top outcomes</div>
-            <ul class="list" style="margin:0;">
-              <li><strong>AI transformation executive</strong> modernizing procurement, supply chain, and manufacturing by embedding automation, decision intelligence, and scalable operating models</li>
-              <li><strong>Builds enterprise execution systems</strong> that improve speed, resiliency, and performance through standardization, governance, and workflow redesign</li>
-              <li><strong>Creates predictive visibility</strong> and leadership dashboards that turn operational signals into actionable decisions and faster outcomes</li>
-              <li><strong>Customer-first MedTech partner</strong>, collaborating with hospitals and physicians to improve throughput and speed-to-care</li>
-              <li><strong>Trusted leader aligning people, process, and technology</strong>—driving adoption and sustainable change at scale</li>
+          <div class="facts" aria-label="Quick facts">
+            <span class="pill">League City, TX</span>
+            <span class="pill">Global: US / EU / APAC / LATAM</span>
+            <span class="pill">Regulated MedTech + Industrial</span>
+            <span class="pill">SAP S/4HANA (P2P) Governance</span>
+          </div>
+        </div>
+
+        <aside class="heroCard" aria-label="Profile summary">
+          <div class="photo">
+            <img src="headshot.jpg" alt="Jason Howie headshot" />
+          </div>
+          <p class="who">Jason Howie</p>
+          <p class="who2">
+            Executive Transformation Leader<br/>
+            Procurement • Supply Chain • Manufacturing
+          </p>
+
+          <div class="mini">
+            <a class="btn" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Resume</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+
+          <div class="ach" aria-label="Top achievements">
+            <ul>
+              <li><strong>AI-enabled execution systems:</strong> embeds automation + decision intelligence to accelerate outcomes.</li>
+              <li><strong>Global standardization:</strong> aligns cross-cultural teams to scale governance and adoption.</li>
+              <li><strong>Continuous improvement at enterprise scale:</strong> institutionalizes cadence, metrics, and problem-solving.</li>
+              <li><strong>Regulated & mission-critical delivery:</strong> builds reliable operating models in high-consequence environments.</li>
             </ul>
           </div>
-        </div>
-      </div>
-
-      <!-- PROFILE -->
-      <aside class="profile" aria-label="Profile">
-        <div class="headshot" aria-label="Profile photo">
-          <img
-            src="headshot.jpg"
-            alt="Jason Howie profile picture"
-            loading="lazy"
-            onload="document.getElementById('hsFallback').style.display='none';"
-            onerror="this.style.display='none'; document.getElementById('hsFallback').style.display='flex';"
-          />
-          <div class="headshot-fallback" id="hsFallback">JH</div>
-        </div>
-
-        <div class="profile-name">Jason Howie</div>
-        <div class="profile-title">
-          VP Transformation • Global Procurement &amp; Supply Chain
-          <br />AI-enabled operating systems • Working capital • OTD
-        </div>
-
-        <div class="profile-links">
-          <a href="tel:+19032786593" aria-label="Call Jason">903-278-6593</a>
-          <a href="mailto:Jason.howie01@gmail.com" aria-label="Email Jason">Email</a>
-          <a href="https://www.linkedin.com/in/jasonhowie1" target="_blank" rel="noreferrer" aria-label="Jason's LinkedIn">LinkedIn</a>
-        </div>
-
-        <div style="margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
-          <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Résumé PDF</a>
-          <button class="btn" id="printBtn" type="button">Print / Save PDF</button>
-        </div>
-
-        <div class="grid-2" aria-label="Impact metrics">
-          <div class="stat">
-            <span class="num">Built & Implemented Execution Control Tower </span>
-            <span class="lbl">Global execution, Automation + controls, KPI governance  </span>
-          </div>
-          <div class="stat">
-            <span class="num">Sustained Service Performance </span>
-            <span class="lbl">90% OTD across global manufacturing + distribution networks</span>
-          </div>
-          <div class="stat">
-            <span class="num">Delivered Transformation In Highly Regulated Industries</span>
-            <span class="lbl">Aligned multidisciplinary, cross-cultural teams to standardize execution and shared performance</span>
-          </div>
-          <div class="stat">
-            <span class="num">Mission-Critical Operating Systems</span>
-            <span class="lbl">Rolled out enterprise-wide systems to strengthen reliability and rapid response in high-consequence environments</span>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <!-- IMPACT / HIGHLIGHTS -->
-    <section id="impact">
-      <h2 class="section-title">Executive Highlights</h2>
-
-      <div class="cards">
-        <div class="card span-12">
-          <h3 style="margin: 0 0 10px;">Signature Impact</h3>
-          <ul class="list">
-            <li><strong>100% on-time delivery</strong> with <strong>zero missed implant orders</strong> through COVID disruption—enabled by predictive risk signals and proactive mitigation (not inventory stockpiling).</li>
-            <li>Led <strong>global transformation</strong> across procurement, supply chain, and manufacturing—improving resiliency, scalability, and execution performance in regulated and industrial environments.</li>
-            <li>Delivered <strong>AI-enabled modernization</strong> integrating automation, proactive analytics, and exception-based management to strengthen performance control.</li>
-          </ul>
-        </div>
-
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Enterprise Leadership</h3>
-          <ul class="list">
-            <li>Owned <strong>SAP S/4HANA P2P governance</strong> globally—workflow standardization, controls, and adoption across <strong>US / EU / APAC / LATAM</strong>.</li>
-            <li>Built enterprise <strong>risk and continuity</strong> capability—early constraint visibility + mitigation playbooks.</li>
-            <li>Shifted performance management to proactive execution—<strong>predictive dashboards</strong> and KPI governance improving decision speed.</li>
-          </ul>
-        </div>
-
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Customer &amp; Growth</h3>
-          <ul class="list">
-            <li>Partnered with hospitals and physicians to accelerate <strong>speed-to-care</strong> through workflow redesign and standardized handoffs.</li>
-            <li>Designed a new product launch operating model + scalable partner ecosystem to accelerate speed-to-market.</li>
-            <li>Delivered repeatable sourcing value + supplier performance improvement strengthening continuity and <strong>working capital</strong>.</li>
-          </ul>
-        </div>
-
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Signature Plays</h3>
-          <div class="taggrid">
-            <span class="tag">Standardize + govern end-to-end</span>
-            <span class="tag">ERP-first execution systems</span>
-            <span class="tag">Predictive risk visibility</span>
-            <span class="tag">Cadence + controls</span>
-            <span class="tag">Working capital by exceptions</span>
-            <span class="tag">Partner ecosystems</span>
-          </div>
-        </div>
-
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Operating Approach</h3>
-          <ul class="list">
-            <li><strong>Outcome-first:</strong> define owners + metrics (service, cost, cash)</li>
-            <li><strong>Systems thinking:</strong> operating model + process + governance</li>
-            <li><strong>Execution reliability:</strong> standard work + performance routines</li>
-            <li><strong>AI responsibly:</strong> human-in-the-loop + risk-based controls</li>
-          </ul>
-        </div>
+        </aside>
       </div>
     </section>
 
-    <!-- RESUME -->
-    <section id="resume">
-      <h2 class="section-title">Resume</h2>
+    <!-- WORK -->
+    <section id="work" aria-label="Work">
+      <h2 class="sectionTitle">Work</h2>
 
-      <div class="cards">
-        <div class="card span-7">
-          <h3 style="margin: 0 0 10px;">Executive Experience</h3>
-
-          <div class="timeline" aria-label="Executive Experience">
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">LivaNova — Global Director, Supply &amp; Procurement</div>
-                <div class="role-meta">2021–Present</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Delivered <strong>30% improvement in working capital</strong> by modernizing global execution through automation, analytics, and governance.</li>
-                  <li>Sustained <strong>99% OTD</strong> (Neuromodulation) and <strong>&gt;90% OTD</strong> (Cardiopulmonary) across global manufacturing.</li>
-                  <li>Maintained <strong>100% OTD</strong> with <strong>zero missed implant orders</strong> through COVID disruption using predictive risk signals.</li>
-                  <li>Built enterprise predictive dashboards + KPI governance improving executive decision speed.</li>
-                  <li>Served as <strong>SAP S/4HANA Global Process Owner (P2P)</strong> standardizing workflows across regions.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">LivaNova — Global Sr. Manager, Sourcing / Procurement / Distribution / Logistics</div>
-                <div class="role-meta">2018–2021</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Delivered <strong>$10M+</strong> sourcing savings and reduced inventory <strong>$15M+</strong> using VMI and PFEP discipline.</li>
-                  <li>Built reporting automation and KPI scorecards strengthening accountability and visibility.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">TEAM — Global Inventory &amp; Procurement Manager</div>
-                <div class="role-meta">2017–2018</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Lean transformation across <strong>3 manufacturing sites + 42 operational sites</strong>; waste down <strong>63%</strong>, efficiency up <strong>50%</strong>.</li>
-                  <li>Lead time reduced <strong>14 days → 48 hours</strong> through material flow redesign and controls.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">Pentair — Materials Manager</div>
-                <div class="role-meta">2015–2017</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Delivered <strong>$20M inventory reduction</strong> and improved lead times <strong>28%</strong>.</li>
-                  <li>Selected as <strong>Global PFEP Leader</strong> standardizing best practices.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">WEIR — Manufacturing Plant Manager</div>
-                <div class="role-meta">2013–2015</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Improved OTD <strong>10% → 87%</strong>, lead time <strong>12 weeks → 6 weeks</strong>, overtime down <strong>70%</strong>.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">Total Safety — Operational Excellence Manager</div>
-                <div class="role-meta">2007–2013</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Built scalable service execution systems improving compliance and consistency.</li>
-                  <li>Increased customer relationships and sales <strong>20%</strong> with bundled solutions.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="role">
-              <div class="role-head">
-                <div class="role-title">United States Air Force — Staff Sergeant</div>
-                <div class="role-meta">2000–2008</div>
-              </div>
-              <div class="role-desc">
-                <ul class="list">
-                  <li>Led teams in mission-critical environments with discipline, readiness, and execution under pressure.</li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="card span-5">
-          <h3 style="margin: 0 0 10px;">Education</h3>
+      <div class="cases">
+        <div class="case">
+          <div class="meta">EXECUTION SYSTEMS</div>
+          <h4>Enterprise visibility + governance</h4>
           <ul class="list">
-            <li><strong>MBA</strong>, Texas A&amp;M University</li>
-            <li><strong>BBA</strong>, International Business, Texas A&amp;M University</li>
-            <li><strong>Executive Leadership</strong>, Strathclyde University (Glasgow, UK)</li>
-          </ul>
-
-          <h3 style="margin: 18px 0 10px;">Certifications</h3>
-          <ul class="list">
-            <li>SAP S/4 Global Process Owner (P2P) — 2024</li>
-            <li>Lean Six Sigma Black Belt (Villanova) — 2014</li>
-            <li>APICS (PPIM) — 2014</li>
-            <li>Shingo: Discover Excellence — 2016</li>
-          </ul>
-
-          <h3 style="margin: 18px 0 10px;">Skills</h3>
-          <div class="taggrid" aria-label="Skills tags">
-            <span class="tag">Applied GenAI Strategy</span>
-            <span class="tag">AI Operating Model</span>
-            <span class="tag">Decision Intelligence</span>
-            <span class="tag">AI Governance</span>
-            <span class="tag">Global Procurement</span>
-            <span class="tag">Working Capital</span>
-            <span class="tag">S&amp;OP / SIOP</span>
-            <span class="tag">SAP S/4HANA (P2P)</span>
-            <span class="tag">Analytics Automation</span>
-          </div>
-
-          <div style="margin-top: 16px;">
-            <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">View PDF Resume</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-
-      <div class="cards">
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">18-Month Product Launch Operating Model</h3>
-          <ul class="list">
-            <li>Built scalable partner ecosystem and operating model; presented recommendations to the ELT.</li>
-            <li>Enabled speed-to-market and rapid scalability through process design + execution governance.</li>
+            <li>Creates leadership dashboards that convert operational signals into actionable decisions.</li>
+            <li>Builds KPI governance and performance routines that sustain results.</li>
+            <li>Moves organizations from reactive reporting to proactive execution control.</li>
           </ul>
         </div>
 
-        <div class="card span-6">
-          <h3 style="margin: 0 0 10px;">Hospital + Physician Throughput Improvement</h3>
+        <div class="case">
+          <div class="meta">AI + OPERATIONS</div>
+          <h4>Automation + decision intelligence</h4>
           <ul class="list">
-            <li>Redesigned workflows and standardized handoffs to accelerate speed-to-care and patient throughput.</li>
+            <li>Modernizes workflows with exception-based management and intelligent automation.</li>
+            <li>Standardizes execution to improve speed, resiliency, and accountability.</li>
+            <li>Operates with risk-based governance and human-in-the-loop controls.</li>
           </ul>
         </div>
 
-        <div class="card span-12">
-          <h3 style="margin: 0 0 10px;">AI + Digital Transformation Portfolio</h3>
-          <ul class="list">
-            <li><strong>Procurement Intelligence Copilot</strong>: policy/SOP search + structured decision summaries.</li>
-            <li><strong>Supplier Risk Early-Warning</strong>: automated monitoring with executive mitigation actions.</li>
-            <li><strong>Working Capital Optimization</strong>: exception-based analytics reducing inventory lock-up.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- LEADERSHIP -->
-    <section id="leadership">
-      <h2 class="section-title">Leadership</h2>
-
-      <div class="cards">
-        <div class="card span-7">
-          <h3 style="margin: 0 0 10px;">How I lead</h3>
-          <ul class="list">
-            <li><strong>Clarity:</strong> align teams on the outcomes that matter and measure them weekly.</li>
-            <li><strong>Cadence:</strong> build operating routines that sustain results (not heroics).</li>
-            <li><strong>Accountability:</strong> define owners, decisions, and escalation paths early.</li>
-            <li><strong>Velocity:</strong> remove friction so teams execute fast and safely.</li>
-            <li><strong>Talent:</strong> coach problem-solving and elevate leaders.</li>
-          </ul>
-        </div>
-
-        <div class="card span-5">
-          <h3 style="margin: 0 0 10px;">Trusted by</h3>
-          <p style="margin:0; color: var(--muted); line-height: 1.58;">
-            Delivered transformation outcomes across regulated MedTech, Energy, Manufacturing, and Industrial Services.
+        <div class="case full">
+          <div class="meta">CUSTOMER IMPACT</div>
+          <h4>Speed-to-care enablement</h4>
+          <p>
+            Customer-first MedTech partner collaborating directly with hospitals and physicians to redesign workflows,
+            standardize handoffs, and improve throughput—accelerating speed-to-care while protecting safety and compliance.
           </p>
-          <div class="taggrid" style="margin-top: 12px;">
-            <span class="tag">LivaNova</span>
-            <span class="tag">Pentair</span>
-            <span class="tag">WEIR</span>
-            <span class="tag">Total Safety</span>
-            <span class="tag">TEAM</span>
-            <span class="tag">US Air Force</span>
-          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section id="approach" aria-label="Approach">
+      <h2 class="sectionTitle">Approach</h2>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>How I drive change</h3>
+          <ul class="list">
+            <li><strong>Outcome-first:</strong> define measurable results, owners, and routines upfront.</li>
+            <li><strong>Operating model + governance:</strong> standard work, controls, and escalation paths.</li>
+            <li><strong>AI responsibly:</strong> secure data flows, HITL controls, and risk-based decisions.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Where I’m strongest</h3>
+          <ul class="list">
+            <li>Global procurement, supply, and manufacturing execution in regulated environments.</li>
+            <li>SAP S/4HANA P2P governance and end-to-end workflow standardization.</li>
+            <li>Cross-cultural leadership and adoption at enterprise scale.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section id="impact" aria-label="Impact">
+      <h2 class="sectionTitle">Impact</h2>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Signature impact</h3>
+          <ul class="list">
+            <li>Maintained uninterrupted delivery in disruption through predictive signals and proactive mitigation.</li>
+            <li>Modernized enterprise execution with automation, analytics, and governance.</li>
+            <li>Standardized global processes to improve reliability, speed, and scalability.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Download</h3>
+          <p>
+            Want the full details? Grab the resume PDF:
+            <br/><br/>
+            <a class="btn btn-primary" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Jason_Howie_Resume_2026.pdf</a>
+          </p>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-      <h2 class="section-title">Contact</h2>
+    <section id="contact" aria-label="Contact">
+      <h2 class="sectionTitle">Contact</h2>
 
-      <div class="cards">
-        <div class="card span-7">
-          <h3 style="margin: 0 0 10px;">Send a message</h3>
-
-          <form id="contactForm" action="https://formspree.io/f/yourFormId" method="POST">
-            <div class="formgrid">
-              <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your name" required />
-              </div>
-
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com" required />
-              </div>
-
-              <div class="field span-12">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
-              </div>
-
-              <div class="field span-12">
-                <button class="btn btn-primary" type="submit">Send Message</button>
-              </div>
-            </div>
-          </form>
-
-          <div class="formnote">
-            Prefer email? Reach me at <a href="mailto:Jason.howie01@gmail.com"><strong>Jason.howie01@gmail.com</strong></a>.
-          </div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Let’s connect</h3>
+          <ul class="list">
+            <li><strong>Email:</strong> <a href="mailto:Jason.howie01@gmail.com">Jason.howie01@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+19032786593">+1 903-278-6593</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jasonhowie1" target="_blank" rel="noreferrer">linkedin.com/in/jasonhowie1</a></li>
+          </ul>
         </div>
 
-        <div class="card span-5">
-          <h3 style="margin: 0 0 10px;">Social</h3>
-          <div class="taggrid">
-            <a class="tag" href="https://www.linkedin.com/in/jasonhowie1" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="tag" href="https://github.com/jasonhowie01-cpu" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-
-          <h3 style="margin: 18px 0 10px;">Quick copy</h3>
-          <div style="border: 1px solid var(--border); border-radius: var(--radius2); background: color-mix(in srgb, var(--card2) 70%, transparent); padding: 14px;">
-            <div style="font-family: var(--mono); font-size: 12px; line-height: 1.55; color: var(--muted);">
-              Hi — I’m Jason Howie. I lead AI-enabled operational transformation across procurement and supply chain.
-              I’d love to connect and explore how I can help drive service performance, resiliency, and working capital improvements.
-            </div>
-          </div>
-
-          <div style="margin-top: 14px;">
-            <a class="btn" href="tel:+19032786593">Call: 903-278-6593</a>
+        <div class="panel">
+          <h3>Message (quick)</h3>
+          <p style="margin:0; color:var(--muted); line-height:1.65;">
+            GitHub Pages is static, so contact forms require a provider.
+            For now, this button opens an email draft:
+          </p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="mailto:Jason.howie01@gmail.com?subject=Website%20Inquiry&body=Hi%20Jason%2C%0A%0A">
+              Email Jason
+            </a>
+            <a class="btn" href="preview.html">Preview Page</a>
           </div>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="footer-inner">
+      <div class="foot">
         <div>© <span id="year"></span> Jason Howie</div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="navlink" href="#home">Top</a>
-          <a class="navlink" href="#resume">Resume</a>
-          <a class="navlink" href="#projects">Projects</a>
-          <a class="navlink" href="#contact">Contact</a>
+          <a class="btn btn-ghost" href="#top">Top</a>
+          <a class="btn btn-ghost" href="Jason_Howie_Resume_2026.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a class="btn btn-ghost" href="preview.html">Preview</a>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    (function () {
+    (function(){
       const root = document.documentElement;
       const themeBtn = document.getElementById('themeBtn');
       const yearEl = document.getElementById('year');
       const menuBtn = document.getElementById('menuBtn');
-      const nav = document.getElementById('siteNav');
+      const mobileNav = document.getElementById('mobileNav');
 
-      // Footer year
       yearEl.textContent = String(new Date().getFullYear());
 
-      // Theme toggle
+      // Theme
       const stored = localStorage.getItem('theme');
-      if (stored === 'light') root.setAttribute('data-theme', 'light');
-      if (stored === 'dark') root.setAttribute('data-theme', 'dark');
-
-      function toggleTheme() {
-        const current = root.getAttribute('data-theme');
-        const next = current === 'light' ? 'dark' : 'light';
+      if (stored) root.setAttribute('data-theme', stored);
+      else {
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
+      themeBtn.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-      }
+      });
 
-      themeBtn.addEventListener('click', toggleTheme);
-
-      if (!stored) {
-        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-        root.setAttribute('data-theme', prefersLight ? 'light' : 'dark');
-      }
-
-      // Mobile menu toggle
-      if (menuBtn && nav) {
-        menuBtn.addEventListener('click', () => {
-          nav.classList.toggle('open');
-        });
-
-        // Close nav when clicking a link
-        nav.querySelectorAll('a').forEach(a => {
-          a.addEventListener('click', () => nav.classList.remove('open'));
-        });
-      }
-
-      // Print / Save PDF
-      const printBtn = document.getElementById('printBtn');
-      if (printBtn) {
-        printBtn.addEventListener('click', () => window.print());
-      }
-
-      // Contact form fallback
-      const form = document.getElementById('contactForm');
-      if (form) {
-        form.addEventListener('submit', (e) => {
-          if ((form.getAttribute('action') || '').includes('yourFormId')) {
-            e.preventDefault();
-            const name = (document.getElementById('name') || {}).value || '';
-            const email = (document.getElementById('email') || {}).value || '';
-            const message = (document.getElementById('message') || {}).value || '';
-            const subject = encodeURIComponent('Website Inquiry');
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            window.location.href = `mailto:Jason.howie01@gmail.com?subject=${subject}&body=${body}`;
-          }
-        });
-      }
+      // Mobile menu
+      menuBtn?.addEventListener('click', () => {
+        const open = mobileNav.style.display === 'block';
+        mobileNav.style.display = open ? 'none' : 'block';
+      });
+      mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileNav.style.display = 'none';
+      }));
     })();
   </script>
 </body>
